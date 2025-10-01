@@ -1,10 +1,12 @@
 {
     "name": "flows",
     "version": "1.0.0",
-    "private": true,
     "description": "README",
-    "keywords": [],
-    "proxy": "http://127.0.0.1:8080",
+    "main": "src/index.ts",
+    "homepage": "/",
+    "private": true,
+    "author": "work80@mail.ru",
+    "license": "ISC",
     "bugs": {
         "url": "https://github.com/Tryd0g0lik/flows_fronted/issues"
     },
@@ -12,11 +14,9 @@
         "type": "git",
         "url": "git+https://github.com/Tryd0g0lik/flows_fronted.git"
     },
-    "sideEffects": false,
-    "license": "ISC",
-    "author": "work80@mail.ru",
+    
     "type": "commonjs",
-    "main": "src/index.ts",
+    
     "scripts": {
         "lint": "eslint ./src --ext ts,tsx",
         "cssstyle": "npx tailwindcss -i .\\src\\styles\\style.css -o ./src/output.css --watch",
@@ -103,7 +103,9 @@
         "styled-components": "^6.1.19",
         "tailwindcss": "^4.1.13",
         "terser-webpack-plugin": "^5.3.14",
+        "ts-loader": "^9.5.4",
         "tsconfig-paths-webpack-plugin": "^4.2.0",
+        "typescript": "^5.9.3",
         "typescript-eslint": "^8.45.0",
         "url-loader": "^4.1.1",
         "webpack": "^5.102.0",

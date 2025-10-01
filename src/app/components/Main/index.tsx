@@ -1,8 +1,8 @@
 import React, { useEffect}from "react";
 
-export function MainFC({...props}): React.JSX.Element {
+export function MainFC(): React.JSX.Element {
     
-    const [title, ...more] = props.page;
+    // const [title, ...more] = props.page;
     return (
         <>
         
@@ -13,7 +13,7 @@ export function MainFC({...props}): React.JSX.Element {
                 <div className="flex items-right"></div>
             </div>
         </header>
-        <div className="h"><h1>{title}</h1></div>
+        
         <main>
             <section className="flex h-screen justify-center ">
                 <div className="flex h-screen relative items-center justify-center bg-gray-50">

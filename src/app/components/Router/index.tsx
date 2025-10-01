@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import { MainFC } from '@pages/components/Main';
+import { MainFC } from 'src/app/components/Main';
 import { setCurrentMeta } from 'src/redux/features/pagestate/pageSlice';
 // import { RegisterFC } from 'src/pages/components/Register';
 import { PageMeta } from '@interfeces';
@@ -15,7 +15,7 @@ import { RootState } from 'src/redux/store';
 const router_ = (pageMeta: PageMeta) => createBrowserRouter([
         {
             path: '/',
-            element: <MainFC {...pageMeta}/>,
+            element: <MainFC />,
         },
     
     ]);

@@ -1,0 +1,11 @@
+#map {
+    height: 100%;
+}
+
+.h p {
+    font-family: 'Edu NSW ACT Cursive';
+    line-height: 1.2;
+    font-size: 1.3em;
+    font-weight: 200;
+    letter-spacing: 4px;
+}

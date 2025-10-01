@@ -7,47 +7,18 @@ const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
 const merge = require('merge');
 const webpackConfig = require('./webpack.config.init.js');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 
-module.exports =  {
+module.exports = merge(webpackConfig, {
     
     cache: false,
+    
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'scripts/main-[id]-[fullhash].js',
         publicPath: '/',
         clean: true,
     },
-    entry: {
-        index: {
-            import: 'src/index.ts',
-            dependOn: 'shared',
-        },
-        // https://webpack.js.org/guides/code-splitting/#entry-dependencies
-        another: {
-            import: './src/map/another-module.ts',
-            dependOn: 'shared',
-        },
-        shared: 'lodash',
-    },
-    // https://webpack.js.org/guides/code-splitting/#entry-dependencies
-    optimization: {
-        runtimeChunk: 'single',
-        // minimize: false,
-        minimizer: [
-            new TerserPlugin({
-                terserOptions: {
-                    format: {
-                        comments: false, // out all comments
-                    },
-                },
-                extractComments: false, // dont save comments in separate files
-            }),
-        ],
-    },
-        target: 'web',
+    
     module: {
         rules: [
             {
@@ -96,15 +67,11 @@ module.exports =  {
             columns: true,
         }),
         new HtmlWebpackPlugin({
-            template: 'src/public/index.html',
+            template: './public/index.html',
             filename: 'index.html',
         }),
         new MiniCssExtractPlugin({
-            filename: './statics/styles/[name].css',
-        }),
-        new CleanWebpackPlugin(),
-        new ESLintPlugin({
-            files: path.resolve(__dirname, 'src/'),
+            filename: 'statics/styles//[name].css',
         }),
     ],
     watchOptions: {
@@ -130,9 +97,8 @@ module.exports =  {
         modules: [path.resolve(__dirname, 'node_modules')],
         alias: {
             '@interfeces': path.resolve(__dirname, 'src/interfaces.ts'),
-            // reduxToolkit: path.resolve(__dirname, 'src/reduxs'),
-            // pictures: path.resolve(__dirname, 'src/pictures'),
+    
             '@pages': path.resolve(__dirname, 'src/app'),
         },
     },
-};
+});

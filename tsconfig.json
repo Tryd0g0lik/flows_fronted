@@ -20,7 +20,7 @@
         "baseUrl": ".",
         "paths": {
             "@interfeces": ["./src/interfaces.ts"],
-            "@pages/*": ["src/app/*"]
+            "@pages/*": ["./src/app/*"]
         }
     },
     "include": ["./src"],

@@ -1,5 +1,3 @@
-import "src/output.css";
-import "src/styles/style_light.scss"
-import "src/app/components/App.tsx";
-
-
+import 'src/output.css';
+import "./styles/style.scss";
+import "./app/components/App";
