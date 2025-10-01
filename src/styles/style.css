@@ -11,7 +11,7 @@ src\styles\style.css
 
 /* BASIS */
 html {
-    @extend %font-basis;
+    
     background-color: var(--bg-body-color);
 }
 body,
@@ -33,7 +33,7 @@ input[type='file'],
 input[type='number'],
 input[type='checkbox'],
 select {
-    @extend %font-basis;
+    
     color: var(--bs-body-color);
 }
 label,
@@ -53,14 +53,14 @@ label {
     background: none;
 }
 a {
-    @extend %font-basis;
+    
     cursor: pointer;
 }
 #root li a.active {
     color: var(--priority-dark-color);
 }
 h1 {
-    @extend %font-basis;
+    
     font-size: 1.875em;
 }
 h2 {

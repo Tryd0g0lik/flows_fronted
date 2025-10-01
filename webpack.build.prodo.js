@@ -7,7 +7,7 @@ const merge = require('merge');
 const webpackConfig = require('./webpack.config.init.js');
 
 module.exports = merge(webpackConfig, {
-    mode: 'production',
+    
     cache: false,
     output: {
         path: path.resolve(__dirname, '../backend/static'),

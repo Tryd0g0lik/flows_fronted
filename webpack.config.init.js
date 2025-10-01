@@ -5,11 +5,11 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
-    mode: null,
+    
     cache: false,
     entry: {
         index: {
-            import: 'src\\index.ts',
+            import: 'src/index.ts',
             dependOn: 'shared',
         },
         // https://webpack.js.org/guides/code-splitting/#entry-dependencies
@@ -19,9 +19,7 @@ module.exports = {
         },
         shared: 'lodash',
     },
-    optimization: {
-        runtimeChunk: 'single',
-    },
+
     // https://webpack.js.org/guides/code-splitting/#entry-dependencies
     optimization: {
         runtimeChunk: 'single',
