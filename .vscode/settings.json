@@ -1,0 +1,25 @@
+// https://code.visualstudio.com/docs/configure/settings
+{
+    // Управляет поведением пустых групп редакторов при закрытии последней вкладки в группе. Если этот параметр установлен, пустые группы будут закрыты автоматически. Если этот параметр не установлен, пустые группы останутся частью сетки.
+    "workbench.editor.closeEmptyGroups": true,
+    "eslint.rules.customizations": [
+        // https://eslint.style/guide/faq#what-are-stylistic-rules
+        {
+            "rule": "@stylistic/*",
+            "fixable": true,
+            "severity": "info"
+        }
+    ],
+    "explorer.enableDragAndDrop": true,
+    "files.autoSave": "off", //"onFocusChange" или "afterDelay", "off"
+    "editor.renderLineHighlight": "all",
+    "workbench.colorCustomizations": {
+        "editorLineNumber.activeForeground": "#ff0000",
+        "editorIndentGuide.activeBackground": "#ffaaaa"
+    },
+    "editor.stickyTabStops": true,
+    "editor.tabCompletion": "on",
+    "workbench.editor.highlightModifiedTabs": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.detectIndentation": false
+}

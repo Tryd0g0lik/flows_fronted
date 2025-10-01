@@ -1,0 +1,79 @@
+/**
+src\styles\style.css
+*/
+
+@import 'tailwindcss';
+
+
+
+
+/*640, 750, 828, 1080, 1200, 1920, 2048, 3840*/
+
+/* BASIS */
+html {
+    @extend %font-basis;
+    background-color: var(--bg-body-color);
+}
+body,
+div#body {
+    background-color: var(--bg-body-color);
+}
+
+p,
+span,
+label,
+button,
+textarea.form-control,
+textarea.form-control:focus,
+a:not([href]):not([class]),
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='file'],
+input[type='number'],
+input[type='checkbox'],
+select {
+    @extend %font-basis;
+    color: var(--bs-body-color);
+}
+label,
+button,
+textarea.form-control,
+textarea.form-control:focus,
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='file'],
+input[type='number'],
+input[type='checkbox'],
+select {
+    background-color: var(--bg-dashboard-color);
+}
+label {
+    background: none;
+}
+a {
+    @extend %font-basis;
+    cursor: pointer;
+}
+#root li a.active {
+    color: var(--priority-dark-color);
+}
+h1 {
+    @extend %font-basis;
+    font-size: 1.875em;
+}
+h2 {
+    font-size: 1.57em;
+}
+h1,
+h2 {
+    text-align: center;
+}
+h3 {
+    font-size: 1.37em;
+}
+
+#body span {
+    text-transform: math-auto;
+}
