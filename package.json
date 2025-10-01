@@ -14,9 +14,7 @@
         "type": "git",
         "url": "git+https://github.com/Tryd0g0lik/flows_fronted.git"
     },
-    
     "type": "commonjs",
-    
     "scripts": {
         "lint": "eslint ./src --ext ts,tsx",
         "cssstyle": "npx tailwindcss -i .\\src\\styles\\style.css -o ./src/output.css --watch",
