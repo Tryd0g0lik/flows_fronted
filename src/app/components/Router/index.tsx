@@ -7,15 +7,21 @@ import { useSelector, useDispatch } from 'react-redux';
 import { MainFC } from '@pages/components/Main';
 import { setCurrentMeta } from 'src/redux/features/pagestate/pageSlice';
 // import { RegisterFC } from 'src/pages/components/Register';
-import { PageMeta } from '@interfeces';
+import { BASIC_URL_API, PageMeta } from '@interfeces';
 import { RootState } from 'src/redux/store';
-// import AppGoogleMapsFC from 'src/pages/components/Maps';
+const piUrl = [
+        `${BASIC_URL_API}/flow/`, 
+        `${BASIC_URL_API}/type/`, 
+        `${BASIC_URL_API}/status/`, 
+        `${BASIC_URL_API}/category/`, 
+        `${BASIC_URL_API}/subcategory/`
+    ];
 
 // 'pageMeta' - Data from redux
 const router_ = (pageMeta: PageMeta) => createBrowserRouter([
         {
             path: '/',
-            element: <MainFC {...pageMeta}/>,
+            element: <MainFC arrApiUrl={piUrl} {...pageMeta}/>,
         },
     
     ]);
@@ -26,7 +32,7 @@ export const MetaListener = () => {
     useEffect(() => {
         const pathname = window.location.pathname.toLowerCase().trim();
         const pageName = pathname.includes('')
-            ? 'Главная'
+            ? 'Записи'
             : pathname.includes('login')
               ? 'Authorisation'
               : 'Main page';
