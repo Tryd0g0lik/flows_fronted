@@ -6,7 +6,6 @@ interface ErrorSource {
 
 class ErrorSourceName implements ErrorSource{
     private readonly error: Error;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     private readonly parentCaonstructor: Function;
 
     constructor(error: Error, parentClass: Function) {

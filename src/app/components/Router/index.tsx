@@ -1,6 +1,7 @@
 /**
- * src\components\Router\index.tsx
+ * src\app\components\Router\index.tsx
  */
+
 import React, { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';

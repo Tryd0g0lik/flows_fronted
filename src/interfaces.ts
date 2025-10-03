@@ -1,8 +1,8 @@
-import { store } from "./redux/store";
-
 /**
  * src\interfaces.ts
  */
+import { store } from "./redux/store";
+
 const APP_HOST = process.env.APP_HOST || '83.166.245.209';
 const APP_PORT = process.env.APP_PORT || '8000';
 const APP_PROTOCOL = process.env.HTTP || 'http';
@@ -72,3 +72,4 @@ export interface Category {
     name: string,
     subcategories: Number[]
 }
+

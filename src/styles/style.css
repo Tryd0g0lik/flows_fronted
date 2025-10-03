@@ -85,6 +85,12 @@ h1  {
     line-height: 3;
     color: var(--color-slate-600);
 }
+.readonly-select {
+  pointer-events: none;
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+  opacity: 0.8;
+}
 
 :root,
  [data-theme="light"] {

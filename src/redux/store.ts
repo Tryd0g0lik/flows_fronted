@@ -3,6 +3,7 @@
  */
 import { configureStore } from '@reduxjs/toolkit';
 import pageSlice from 'src/redux/features/pagestate/pageSlice';
+import rowSlice from './features/tableRow/rowSlice';
 
 
 /**
@@ -12,6 +13,7 @@ import pageSlice from 'src/redux/features/pagestate/pageSlice';
 export const store = configureStore({
     reducer: {
         metapage: pageSlice,
+        flow: rowSlice,
     },
 });
 

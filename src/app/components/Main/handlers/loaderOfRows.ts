@@ -1,3 +1,6 @@
+/**
+ * src\app\components\Main\handlers\loaderOfRows.ts
+ */
 import {BASIC_URL_API, Category, Flow, Status, Subcategory, Type, } from 'src/interfaces';
 
 async function getAllAndOne(apiPath: string): Promise<boolean | Flow| Flow[]| Type| Type[]
@@ -6,7 +9,6 @@ async function getAllAndOne(apiPath: string): Promise<boolean | Flow| Flow[]| Ty
         const response = await fetch(apiPath);
         if (!response.ok) false;
         const data = await response.json();
-        console.log('RESPONSE: ', data);
         return data;
     } catch (error) {
         console.error(`Method GET to the server by API '${apiPath}' failed`);

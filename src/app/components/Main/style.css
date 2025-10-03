@@ -1,2 +1,5 @@
+/**
+src\app\components\Main\style.css
+*/
 @import 'tailwindcss';
 @plugin "daisyui";
