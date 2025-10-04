@@ -171,7 +171,12 @@ export function MainFC({...props}: PageAssorty): React.JSX.Element {
                                     <th></th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody onMouseDown={(event: React.MouseEvent<HTMLTableSectionElement>): void => {
+                                    const target = event.target as HTMLElement;
+                                    if (target.tagName.toLowerCase().startsWith('button') && (target.className).includes('cansel')) {
+                                        setSetting(false);
+                                    }
+                                }}>
                                 {/* row 1 */}
                                 
                                 {tableContent}

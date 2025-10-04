@@ -1,13 +1,14 @@
 /**
  * src\app\components\Settings\index.tsx
  */
-import { format } from 'path';
-import {JSX, useEffect, useRef } from 'react';
+import React, {JSX, useEffect } from 'react';
 import Button from 'src/components/fields/Button';
 import Input from 'src/components/fields/InputEmpty';
+import selectCell from './handlers/selectCell';
 export function SettingsFC({...props}): JSX.Element {
     const {flow, type, category, subcategory, 
         status, money, slug, created_at, updated_at } = props.props;
+    
     // GET COMPOMEMTS OF FORMS & DATA
     const inputTypeField = () => <Input placholderText={type.content} />;
     const inputCategoryField = () => <Input placholderText={category.content} />;
@@ -17,7 +18,6 @@ export function SettingsFC({...props}): JSX.Element {
     const inputCreated_atField = () => <Input typeName='date'  classes = 'created_at input input-neutral'  placholderText={created_at.content} />;
     const inputUpdated_atField = () => <Input typeName='date' classes = 'updated_at input input-neutral' placholderText={updated_at.content} />;
     const buttonField = () => <Button contentButton={"Сохранить"} classes={"btn btn-outline btn-secondary"} classesDiv={''} />;
-    const buttonCansField = () => <Button contentButton={"Отмена"}  classes={"btn btn-outline btn-warning"} classesDiv={''} />;
     useEffect(() =>{
         // INSER THE DATE IN THE INPUTS
         const created_atDate = new Date(created_at.content);
@@ -29,7 +29,12 @@ export function SettingsFC({...props}): JSX.Element {
     return (
         <>        
             {/* row 1 */}
-            <tr data-flow={flow.id}>
+            <tr onMouseDown={(event: React.MouseEvent<HTMLTableRowElement>) => {
+                const result = selectCell.getData(event);
+                if (!result) {
+                    return;
+                }
+            }} data-flow={flow.id}>
                 <td>0</td>
                 <td data-type={type.id}>
                     {inputTypeField()}                    
@@ -59,7 +64,9 @@ export function SettingsFC({...props}): JSX.Element {
                 <td data-name="updated_at">{inputUpdated_atField()}</td>
                 <td data-name="setting">
                     {buttonField()}
-                    {buttonCansField()}
+                    <div>
+                        <button className="cansel btn btn-outline btn-warning" >Отмена</button>
+                    </div>
                 </td>
             </tr>
             
