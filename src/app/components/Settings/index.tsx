@@ -1,36 +1,31 @@
 /**
  * src\app\components\Settings\index.tsx
  */
-import React, {JSX, useCallback, useEffect, useState } from 'react';
+import React, {JSX, MouseEvent, useCallback, useEffect, useState } from 'react';
 import Button from 'src/components/fields/Button';
 import Input from 'src/components/fields/InputEmpty';
 import selectCell from './handlers/selectCell';
-import getAllAndOne from '../Main/handlers/loaderOfRows';
-import { Category, Status } from '@interfeces';
+import { Category, SabcategoryAPIURL, Status, Subcategory } from '@interfeces';
+import {taskGetCategroyStatus, taskGetindexesLiveSubcategory, taskGetSubategroyLive} from "@pages/components/Settings/tasks";
+
+
 
 export function SettingsFC({...props}): JSX.Element {
     const [statuses, setStatuses] = useState<Status[]>([]);
     const [categories, setCategories] = useState<Category[]>([]);
-    const {flow, type, category, subcategory, 
+    const [subcategories, setSubcategories] = useState<Subcategory[]>([]);
+    const {flow, type, category, 
         status, money, slug, created_at, updated_at, ...more } = props.props;
-    
+    let { subcategory}  = props.props;
     // GET DATA FROM DB
     /**
      * @param statusCategor - result from request by DB to the table 'category'.
      * @param statusResult - result from request by DB to the table 'status'.
      */
     const childrenData = useCallback( async (): Promise<void> => {
-        try {
-            const [statusCategor, statusResult, ] = await  Promise.all([
-                getAllAndOne(more[3]),
-                getAllAndOne(more[2]),
-            ]);
-            setCategories(statusCategor ? (statusCategor as Category[]): []);
-            setStatuses(statusResult ? (statusResult as unknown as Status[]) : []);
-        } catch (error) {
-            console.error("ERROR => ", (error as Error).message);
-        }       
-
+        const [statusCategor, statusResult ] = await taskGetCategroyStatus(more);
+        setCategories(statusCategor ? (statusCategor as Category[]): []);
+        setStatuses(statusResult ? (statusResult as unknown as Status[]) : []);
     }, []);
     // GET COMPOMEMTS OF FORMS & DATA
     const inputTypeField = () => <Input placholderText={type.content} />;
@@ -66,15 +61,18 @@ export function SettingsFC({...props}): JSX.Element {
                     {inputTypeField()}                    
                 </td>
                 
-                <td >
-                    {/* {inputCategoryField()} */}
+                <td onMouseUp={async (event: MouseEvent)=>{
+                    const result = await taskGetindexesLiveSubcategory(event);
+                    const props = {subcategories: result, more: {...more}} as SabcategoryAPIURL;
+                    setSubcategories(await taskGetSubategroyLive(props));
+                    }}>
                     <select defaultValue="Category" className="select appearance-none" >
                         {categories? (categories as Category[]).map((item: Category, index: number) => (
                             (item.id===Number(category.id))?(
-                                <option key={0} selected data-category={item.id} >{item.name}</option>
+                                <option key={0} selected data-category={item.id} data-child={item.subcategories}>{item.name}</option>
                                 
                             ): (
-                                <option key={index + 1} data-categery={item.id} >{item.name}</option>
+                                <option key={index + 1} data-categery={item.id} data-child={item.subcategories}>{item.name}</option>
                             )
                             
                         )): (<span className="loading loading-bars loading-xl"></span>)
@@ -82,12 +80,14 @@ export function SettingsFC({...props}): JSX.Element {
                     </select>
                 </td>
                 
-                <td data-name='subcategory'>
+                <td data-name='subcategory' > 
                     <select defaultValue="Subcategory" className=" select appearance-none" >
                         
-                        {subcategory? subcategory.map((item: {id: string,  content: string}, index: number) => (
+                        {subcategories?.length === 0 && subcategory? subcategory.map((item: {id: string,  content: string}, index: number) => (
                             <option key={index} data-subcategery={item.id} >{item.content}</option>
-                        )):(<span className="loading loading-bars loading-xl"></span>)
+                        )):(subcategories?.length > 0 ? subcategories.map((item, index: number) => (
+                            <option key={index} data-subcategery={item.id} >{item.name}</option>
+                        )) : <span className="loading loading-bars loading-xl"></span>)
                         }
                     
                     </select>   

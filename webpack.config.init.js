@@ -54,11 +54,6 @@ module.exports = {
         extensions: ['.tsx', '.jsx', '.ts', '.js', '.svg'],
         plugins: [new TsconfigPathsPlugin()],
         modules: [path.resolve(__dirname, 'node_modules')],
-        alias: {
-            '@interfeces': path.resolve(__dirname, 'src/interfaces.ts'),
-            // reduxToolkit: path.resolve(__dirname, 'src/reduxs'),
-            // pictures: path.resolve(__dirname, 'src/pictures'),
-            '@pages': path.resolve(__dirname, 'src/app'),
-        },
+        
     },
 };

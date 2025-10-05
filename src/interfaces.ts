@@ -73,3 +73,8 @@ export interface Category {
     subcategories: Number[]
 }
 
+
+// For work into the tasks from component of 'Settings' 
+export interface SabcategoryAPIURL {
+    subcategories:number[],
+    more: string[]}

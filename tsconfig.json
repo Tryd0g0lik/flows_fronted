@@ -20,7 +20,8 @@
         "baseUrl": ".",
         "paths": {
             "@interfeces": ["./src/interfaces.ts"],
-            "@pages/*": ["./src/app/*"]
+            "@pages/*": ["./src/app/*"],
+            "@redux/Slice/*":["src/redux/features/*"]
         }
     },
     "include": ["./src"],
