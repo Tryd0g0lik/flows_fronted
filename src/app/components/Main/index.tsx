@@ -29,7 +29,12 @@ export function MainFC({...props}: PageAssorty): React.JSX.Element {
     // Sequential execution with proper data flow
     const executeTasksSequentially = useCallback(async (): Promise<void> => {
             try {
-                // Step 1: Get lines, types, status
+                // GET DATA FROM DB Step 1: Get lines, types, status
+                /**
+                 * @param statusResult - result from request by DB to the table 'status'.
+                 * @param typeResult - result from request by DB to the table 'type'.
+                 * @param flowResult - result from request by DB to the table 'flow'.
+                 */
                 const [flowResult, typeResult, statusResult] = await Promise.all([
                     task0GetLines(arrApiUrl[0]),
                     task0GetLines(arrApiUrl[1]),
@@ -65,7 +70,7 @@ export function MainFC({...props}: PageAssorty): React.JSX.Element {
         }, []);
 
     const tableContent = setting ? (
-            <SettingsFC props={{...currentFlow, ...setSetting}}  />
+            <SettingsFC props={{...currentFlow, ...setSetting, ...arrApiUrl}}  />
             
         ) : lines?.length > 0 ? (
             lines.map((item, index) => (                

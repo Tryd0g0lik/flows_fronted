@@ -7,7 +7,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { MainFC } from '@pages/components/Main';
 import { setCurrentMeta } from 'src/redux/features/pagestate/pageSlice';
-// import { RegisterFC } from 'src/pages/components/Register';
 import { BASIC_URL_API, PageMeta } from '@interfeces';
 import { RootState } from 'src/redux/store';
 const piUrl = [
@@ -23,6 +22,7 @@ const router_ = (pageMeta: PageMeta) => createBrowserRouter([
         {
             path: '/',
             element: <MainFC arrApiUrl={piUrl} {...pageMeta}/>,
+            
         },
     
     ]);
