@@ -21,5 +21,9 @@
     "editor.tabCompletion": "on",
     "workbench.editor.highlightModifiedTabs": true,
     "editor.cursorBlinking": "smooth",
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "files.associations": {
+    "*.md": "markdown"
+  },
+    "explorer.fileNesting.enabled": true
 }
