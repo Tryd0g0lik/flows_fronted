@@ -5,15 +5,18 @@ import React, {JSX, MouseEvent, useCallback, useEffect, useState } from 'react';
 import Button from 'src/components/fields/Button';
 import Input from 'src/components/fields/InputEmpty';
 import selectCell from './handlers/selectCell';
-import { Category, SabcategoryAPIURL, Status, Subcategory } from '@interfeces';
-import {taskGetCategroyStatus, taskGetindexesLiveSubcategory, taskGetSubategroyLive} from "@pages/components/Settings/tasks";
-
+import { Category, SabcategoryAPIURL, Status, Subcategory, Type } from '@interfeces';
+import {taskGetCategroyStatus, 
+    taskGetindexesLiveSubcategory,
+     taskGetSubategroyLive,
+     taskGetTypes,} from "@pages/components/Settings/tasks";
 
 
 export function SettingsFC({...props}): JSX.Element {
     const [statuses, setStatuses] = useState<Status[]>([]);
     const [categories, setCategories] = useState<Category[]>([]);
     const [subcategories, setSubcategories] = useState<Subcategory[]>([]);
+    const [types, setTypes] = useState<Type[]>([]);
     const {flow, type, category, 
         status, money, slug, created_at, updated_at, ...more } = props.props;
     let { subcategory}  = props.props;
@@ -33,6 +36,7 @@ export function SettingsFC({...props}): JSX.Element {
     const inputSlugField = () => <Input placholderText={slug.content} />;
     const inputCreated_atField = () => <Input typeName='date'  classes = 'created_at input input-neutral'  placholderText={created_at.content} />;
     const inputUpdated_atField = () => <Input typeName='date' classes = 'updated_at input input-neutral' placholderText={updated_at.content} />;
+    
     const buttonField = () => <Button contentButton={"Сохранить"} classes={"save btn btn-outline btn-secondary"} classesDiv={''} />;
     useEffect(() =>{
         childrenData();
@@ -41,8 +45,13 @@ export function SettingsFC({...props}): JSX.Element {
         const updated_atDate = new Date(updated_at.content);
         (document.getElementsByClassName("created_at")[0] as HTMLInputElement).valueAsDate=created_atDate;
         (document.getElementsByClassName("updated_at")[0] as HTMLInputElement).valueAsDate = updated_atDate as unknown as  Date ;
-    });
-    
+        Promise.all([(async () =>{
+                    const result = await taskGetTypes(more);
+                    setTypes(result as Type[]);
+                })(),]);
+            
+    }, []);
+    // 
     return (
         <>        
             {/* row 1 */}
@@ -58,9 +67,22 @@ export function SettingsFC({...props}): JSX.Element {
             }} data-flow={flow.id}>
                 <td>0</td>
                 <td data-type={type.id}>
-                    {inputTypeField()}                    
+                    <select defaultValue="Type" className="select appearance-none" >
+                        {/* TYPE */}
+                        {types.length > 0 ? (types as Type[]).map((item: Status, index: number) => (
+                            (item.id===Number(type.id))? (
+                                <option key={0} selected data-type={item.id} >{item.name}</option>
+                                
+                            ): (
+                                <option key={index + 1} data-type={item.id} >{item.name}</option>
+                            )
+                            
+                        )): (<span className="loading loading-bars loading-xl"></span>)
+                        }
+                    
+                    </select> 
                 </td>
-                
+                {/* CATEGORY */}
                 <td onMouseUp={async (event: MouseEvent)=>{
                     const result = await taskGetindexesLiveSubcategory(event);
                     const props = {subcategories: result, more: {...more}} as SabcategoryAPIURL;
@@ -79,7 +101,7 @@ export function SettingsFC({...props}): JSX.Element {
                         }
                     </select>
                 </td>
-                
+                {/* SUBCATEGORY */}
                 <td data-name='subcategory' > 
                     <select defaultValue="Subcategory" className=" select appearance-none" >
                         
@@ -93,6 +115,7 @@ export function SettingsFC({...props}): JSX.Element {
                     </select>   
                     
                 </td>
+                {/* STATUS */}
                 <td >
                     <select defaultValue="Status" className="select appearance-none" >
                         
@@ -101,7 +124,7 @@ export function SettingsFC({...props}): JSX.Element {
                                 <option key={0} selected data-status={item.id} >{item.name}</option>
                                 
                             ): (
-                                <option key={index + 1 }  data-status={item.id} >{item.name}</option>
+                                <option key={index + 1}  data-status={item.id} >{item.name}</option>
                             )
                             
                         )): (<span className="loading loading-bars loading-xl"></span>)
@@ -124,3 +147,4 @@ export function SettingsFC({...props}): JSX.Element {
         </>
     );
 }
+
