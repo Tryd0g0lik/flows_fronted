@@ -6,24 +6,27 @@ import Button from 'src/components/fields/Button';
 import Input from 'src/components/fields/InputEmpty';
 import selectCell from './handlers/selectCell';
 import getAllAndOne from '../Main/handlers/loaderOfRows';
-import { Status } from '@interfeces';
+import { Category, Status } from '@interfeces';
 
 export function SettingsFC({...props}): JSX.Element {
     const [statuses, setStatuses] = useState<Status[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
     const {flow, type, category, subcategory, 
         status, money, slug, created_at, updated_at, ...more } = props.props;
     
     // GET DATA FROM DB
     /**
+     * @param statusCategor - result from request by DB to the table 'category'.
      * @param statusResult - result from request by DB to the table 'status'.
      */
     const childrenData = useCallback( async (): Promise<void> => {
         try {
-            const [statusResult, ] = await  Promise.all([getAllAndOne(more[2])]);
-            if (!statusResult){
-                return;
-            }
-            setStatuses((statusResult as Status[]));
+            const [statusCategor, statusResult, ] = await  Promise.all([
+                getAllAndOne(more[3]),
+                getAllAndOne(more[2]),
+            ]);
+            setCategories(statusCategor ? (statusCategor as Category[]): []);
+            setStatuses(statusResult ? (statusResult as unknown as Status[]) : []);
         } catch (error) {
             console.error("ERROR => ", (error as Error).message);
         }       
@@ -31,8 +34,6 @@ export function SettingsFC({...props}): JSX.Element {
     }, []);
     // GET COMPOMEMTS OF FORMS & DATA
     const inputTypeField = () => <Input placholderText={type.content} />;
-    const inputCategoryField = () => <Input placholderText={category.content} />;
-    // const inputStatusField = () => <Input placholderText={status.content} />;
     const inputMoneyField = () => <Input placholderText={money.content} />;
     const inputSlugField = () => <Input placholderText={slug.content} />;
     const inputCreated_atField = () => <Input typeName='date'  classes = 'created_at input input-neutral'  placholderText={created_at.content} />;
@@ -65,23 +66,34 @@ export function SettingsFC({...props}): JSX.Element {
                     {inputTypeField()}                    
                 </td>
                 
-                <td data-category={category.id}>
-                    {inputCategoryField()}
+                <td >
+                    {/* {inputCategoryField()} */}
+                    <select defaultValue="Category" className="select appearance-none" >
+                        {categories? (categories as Category[]).map((item: Category, index: number) => (
+                            (item.id===Number(category.id))?(
+                                <option key={0} selected data-category={item.id} >{item.name}</option>
+                                
+                            ): (
+                                <option key={index + 1} data-categery={item.id} >{item.name}</option>
+                            )
+                            
+                        )): (<span className="loading loading-bars loading-xl"></span>)
+                        }
+                    </select>
                 </td>
                 
                 <td data-name='subcategory'>
                     <select defaultValue="Subcategory" className=" select appearance-none" >
                         
-                        {subcategory.map((item: {id: string,  content: string}, index: number) => (
+                        {subcategory? subcategory.map((item: {id: string,  content: string}, index: number) => (
                             <option key={index} data-subcategery={item.id} >{item.content}</option>
-                        ))                                                    
+                        )):(<span className="loading loading-bars loading-xl"></span>)
                         }
                     
-                    </select>                  
+                    </select>   
                     
                 </td>
                 <td >
-                    {/* {inputStatusField()} */}
                     <select defaultValue="Status" className="select appearance-none" >
                         
                         {statuses? (statuses as Status[]).map((item: Status, index: number) => (
