@@ -1,5 +1,5 @@
 /**
- * src\components\fields\Button.tsx
+ * src\components\ui\Button.tsx
  */
 import {JSX} from "react";
 interface Button{

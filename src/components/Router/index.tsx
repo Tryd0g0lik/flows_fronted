@@ -5,7 +5,7 @@
 import React, { useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import { MainFC } from '@pages/components/Main';
+import { MainFC } from '@Component/Main';
 import { setCurrentMeta } from '@redux/Slice/pagestate/pageSlice';
 import { BASIC_URL_API, PageMeta } from '@interfeces';
 import { RootState } from 'src/redux/store';

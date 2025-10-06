@@ -98,7 +98,7 @@ module.exports = merge(webpackConfig, {
         alias: {
             '@interfeces': path.resolve(__dirname, 'src/interfaces.ts'),
             "@redux/Slice": path.resolve(__dirname, "src/redux/features"),
-            '@pages': path.resolve(__dirname, 'src/app'),
+            '@Component': path.resolve(__dirname, 'src/components'),
         },
     },
 });

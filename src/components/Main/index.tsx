@@ -7,7 +7,7 @@ import { PageMeta, Flow, Type, Status, BASIC_URL_API, Category, Subcategory, Pag
 
 import "./style.css";
 import { task0GetLines, task2GetNumbersOfType, task3GetCategories, task4GetSubcategories } from "./tasks";
-import Table from "src/classes/table";
+import Table from "src/services/table";
 import handlerSettings from "./handlers/handlerForSettings";
 import { SettingsFC } from "../Settings";
 import {useDispatch, useSelector} from "react-redux";

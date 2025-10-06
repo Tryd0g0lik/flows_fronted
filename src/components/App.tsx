@@ -3,7 +3,7 @@
  */
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { PagesRouter } from "@pages/components/Router";
+import { PagesRouter } from "@Component/Router";
 import './style.css';
 import { Provider } from 'react-redux';
 import { store } from 'src/redux/store';

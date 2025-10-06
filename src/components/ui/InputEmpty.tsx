@@ -1,5 +1,5 @@
 /**
- * src\components\fields\InputEmpty.tsx
+ * src\components\ui\InputEmpty.tsx
  */
 interface InputProps {
     typeName?: string;

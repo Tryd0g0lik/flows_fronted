@@ -2,14 +2,14 @@
  * src\app\components\Settings\index.tsx
  */
 import React, {JSX, MouseEvent, useCallback, useEffect, useState } from 'react';
-import Button from 'src/components/fields/Button';
-import Input from 'src/components/fields/InputEmpty';
+import Button from '@Component/ui/Button';
+import Input from '@Component/ui/InputEmpty';
 import selectCell from './handlers/selectCell';
 import { Category, SabcategoryAPIURL, Status, Subcategory, Type } from '@interfeces';
 import {taskGetCategroyStatus, 
     taskGetindexesLiveSubcategory,
      taskGetSubategroyLive,
-     taskGetTypes,} from "@pages/components/Settings/tasks";
+     taskGetTypes,} from "@Component/Settings/tasks";
 
 
 export function SettingsFC({...props}): JSX.Element {
