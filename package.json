@@ -20,7 +20,7 @@
         "cssstyle": "npx tailwindcss -i .\\src\\styles\\style.css -o ./src/output.css --watch",
         "server": "webpack server  --mode=development --config ./webpack.config.js",
         "build:dev": "webpack --mode=development --config ./webpack.config.js",
-        "build": "webpack --mode=prodaction --config ./webpack.build.prodo.js",
+        "build": "webpack --mode=production --config ./webpack.prod.config.js",
         "husky": "npm prepare",
         "prepare": "husky"
     },

@@ -1,5 +1,13 @@
 Backend: [https://github.com/Tryd0g0lik/flows](https://github.com/Tryd0g0lik/flows)
 
+Используя команду "`GIT CLONE`", файлы разместите в директории "`frontend`" согласно дереву. 
+
+```text
+Ваше_имя_локальное	
+├──frontend/
+├──backend/
+```
+
 ## Основные зависимости
 
 ||||
@@ -46,16 +54,16 @@ Backend: [https://github.com/Tryd0g0lik/flows](https://github.com/Tryd0g0lik/flo
 
 ### Category & Subcategory
 ![Category and Subcategory](./img/Chang_category_ad_subcategory.png)\
-Согласно ТЗ\
+Согласно ТЗ
 >> Подкатегории должны быть привязаны к категориям.
 
 На [этапе создания категории](https://github.com/Tryd0g0lik/flows) привязываем "подкатегорию".\
 На стороне браузера, каждая категоря работает только в рамках привязанных к ней подкатегорий.\
-В режиме радактирования в записи при попытке изменить имя категории (не переименовать), колонка "`Subcategory`" изменяет список автоматически.\
-В колонке "`Subcategory`" для выбора представлен список лишь тех наименований "`Subcategory`" которые бли присвоенны "`Сategory`"на этапе создания "`Category`".\
+В режиме радактирования записи, при попытке изменить имя категории (не переименовать), колонка "`Subcategory`" изменяет список автоматически.\
+В колонке "`Subcategory`" для выбора представлен список лишь тех наименований "`Subcategory`" которые бли присвоенны "`Сategory`"на этапе создания "`Category`".
 
 
-### Mony & Slog & created_at 
+### Money & Slog & created_at 
 Данные редактируются без особенностей согласно ТЗ.
 
 ### updated_at
@@ -67,10 +75,11 @@ Backend: [https://github.com/Tryd0g0lik/flows](https://github.com/Tryd0g0lik/flo
 ### Кнопка "Сохранить".
 За 5 дней (срок согласно ТЗ) на стороне браузера реалисовать CRUD просто не успел.\
 Зато, все задачи в ТЗ по:
-- сортировкаж;
+- сортировкам;
 - CRUD;
 - филтры;
-- поиск [реализованы на стороне сервера](https://github.com/Tryd0g0lik/flows). Достаточно войти в админ панель. Согласно ТЗ - привязки к роли и ограничения пользователя - нет.
+- поиск [реализованы на стороне сервера](https://github.com/Tryd0g0lik/flows). Достаточно войти в админ панель.\
+Согласно ТЗ - привязки к роли и ограничениям пользователя - нет.
 
 
 ## Дерево проекта
@@ -138,12 +147,16 @@ Backend: [https://github.com/Tryd0g0lik/flows](https://github.com/Tryd0g0lik/flo
 ## Команды
 - "`npm install package.json`" устанавливаем зависимости;
 - "`npm run husk`" Старт перед "`prepare`". Перед началом, создать  файл (без разрешения)"`pre-commit`" по маршруту "`*./.husky`'. В файле "`pre-commit`" указать строку "`npm run lint`". Запуск возможен только если установлен "`GIT`" в проект;
+---
 - "`npm run prepare`": "husky".
 - "`npm run lint`" - проверка стиля кода и ошибок. Плюс имеем  "`husk`" и  команд "`npm run lint`" автоматически запускается  при  "`git commit`". "`--no-verify`" который отменит проверку/запуск "`npm run lint`";
+---
 - "`npm run build:dev`" сборка в режиме "`development`" по маршруту "`./dist`".
-- "`npm run build`" - сборка в режиме продакшион "`production`". Все файлы найдёте уже на стороне backend части проекта;
+- "`npm run build`" - сборка в режиме продакшион "`production`". Все файлы найдёте уже на стороне backend части проекта. Файлы появятся по маршруту "`../backend/static/scripts`" Перед сборкой измените данные "`APP_HOST`" в файле "`.ENV`" на стороне "`frontend`";
+---
 - "`npm run server`" - Старт локальный сервера для разработки;
 - "`npm run cssstyle`" - запускается перед началом работ, но только после "`npm run server`". Формирует файл "`css`" с учетом используемых стилей и компонентов от "`tailwindcss.com`" & "`daisyui.com`";
+---
 - "`F5`" (клавиша) в режииме debug  запускается проект через браузер Chrome. Запускать только после запуска "`npm run server`";
 - "`git log --all --oneline --graph --decorate --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%C(yellow)%h%C(auto)%d %C(white)%cd%Creset %s'`"  история развития проекта c datetime.
 
@@ -151,3 +164,12 @@ Backend: [https://github.com/Tryd0g0lik/flows](https://github.com/Tryd0g0lik/flo
 ### Note
 Маршруты "`map\another-module.ts`" хронят в себе зависимости и разрабатывая код на стороне сервера, можно работать в debug режиме с "`tsx`" файлами. Работает только если сборку провели в режиме "`development`".
 
+## .ENV
+```text
+APP_HOST = < your_IP_or_domen >
+APP_PORT = < port_of_your_site >
+APP_PROTOCOL = http 
+```
+
+### Note
+Дополнительные изменения по маршруту "`src\interfaces.ts`".
