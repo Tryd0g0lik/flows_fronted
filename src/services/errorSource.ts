@@ -1,4 +1,7 @@
 
+/**
+ * src\services\errorSource.ts
+ */
 interface ErrorSource {
     getClassName(): string;
     getMethodName(): string,

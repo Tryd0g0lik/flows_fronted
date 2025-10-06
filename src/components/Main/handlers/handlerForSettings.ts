@@ -1,12 +1,12 @@
 /**
- * src\app\components\Main\handlers\handlerForSettings.ts
+ * src\components\Main\handlers\handlerForSettings.ts
  */
 
 const handlerSettings = {
 
     /**
-     * 
-     * @param target This 'target' should be from "<td data-name='setting'>"" HTMLTableCellElement 
+     *
+     * @param target This 'target' should be from "<td data-name='setting'>"" HTMLTableCellElement
      * @returns ```
      * [
      * [
@@ -62,18 +62,18 @@ const handlerSettings = {
         ]
     ]
         ```
-     * 
+     *
      */
     getAllTdOfTr(target: HTMLTableCellElement) {
         const trHTML = target.tagName.toLowerCase().startsWith("svg")
-        ? (((target.parentElement as HTMLButtonElement).parentElement as HTMLTableCellElement).parentElement as HTMLTableRowElement) 
+        ? (((target.parentElement as HTMLButtonElement).parentElement as HTMLTableCellElement).parentElement as HTMLTableRowElement)
         : target.parentElement as HTMLTableRowElement;
         if (!(trHTML.tagName.toLowerCase().startsWith("tr"))) return;
         const allTdHtml = trHTML.querySelectorAll('td');
         const map = new Map();
         if (trHTML.hasAttribute("data-flow")){
             map.set("flow",  {"id": trHTML.getAttribute("data-flow")});
-        } 
+        }
 
         allTdHtml.forEach((item: HTMLTableCellElement) =>{
             if (item.hasAttribute("data-type")){
@@ -95,7 +95,7 @@ const handlerSettings = {
                 if (item.getAttribute("data-name")?.startsWith("money")){
                     map.set("money", {"content": item.textContent});
                 } else if (item.getAttribute("data-name")?.startsWith("subcategory")){
-                    
+
                     const arrContent =item.querySelectorAll("option");
                     const arrcontent = [];
                     for (let i = 0; i < (arrContent).length; i++){
@@ -112,9 +112,9 @@ const handlerSettings = {
                     map.set("created_at", {"content": item.textContent});
                 }  else if (item.getAttribute("data-name")?.startsWith("updated_at")) {
                     map.set("updated_at", {"content": item.textContent});
-                } 
+                }
             }
-            
+
         });
         return [...map];
     }

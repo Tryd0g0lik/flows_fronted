@@ -1,5 +1,5 @@
 /**
- * src\redux\features\pagestate\pageState.ts
+ * src\redux\features\pagestate\pageSlice.ts
  *
  * From the PageRouter we can get page.title, page.description, page.keywords, page.pathName and other data.
  * Example. We can get variable the page.pathName and change the page title/handing in components.

@@ -1,5 +1,5 @@
 /**
- * src\app\components\App.tsx
+ * src\components\App.tsx
  */
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';

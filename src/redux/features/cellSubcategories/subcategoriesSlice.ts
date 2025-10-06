@@ -1,3 +1,6 @@
+/**
+ * src\redux\features\cellSubcategories\subcategoriesSlice.ts
+ */
 import {createSlice} from "@reduxjs/toolkit";
 import type { PayloadAction} from "@reduxjs/toolkit";
 import type { Category  } from "@interfeces";
@@ -20,7 +23,7 @@ const subcategorySlice = createSlice({
             return {...state};
         }
     }
-    
+
 });
 
 export const { resetSubcategory, setSubcategory } = subcategorySlice.actions;

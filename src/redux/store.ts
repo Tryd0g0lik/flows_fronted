@@ -1,5 +1,5 @@
 /**
- * \src\redux\store.ts
+ * src\redux\store.ts
  */
 import { configureStore } from '@reduxjs/toolkit';
 import pageSlice from '@redux/Slice/pagestate/pageSlice';

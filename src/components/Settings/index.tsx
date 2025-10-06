@@ -1,5 +1,5 @@
 /**
- * src\app\components\Settings\index.tsx
+ * src\components\Settings\index.tsx
  */
 import React, {JSX, MouseEvent, useCallback, useEffect, useState } from 'react';
 import Button from '@Component/ui/Button';

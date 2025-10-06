@@ -1,5 +1,5 @@
 /**
- * src\app\components\Settings\handlers\selectCell.ts
+ * src\components\Settings\handlers\selectCell.ts
  */
 import { MouseEvent } from "react";
 const selectCell = {

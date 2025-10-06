@@ -1,3 +1,6 @@
+/***
+ * src\components\Settings\tasks.ts
+ */
 import {MouseEvent} from "react";
 import getAllAndOne from "../Main/handlers/loaderOfRows";
 import { Category, SabcategoryAPIURL, Subcategory } from "@interfeces";
@@ -62,8 +65,8 @@ const taskGetCategroyStatus = async (more: string[]) => {
 };
 
 /**
- * @description This function for geting - the select of category from user. 
- *  Then we launching the 'taskGetindexesLiveSubcategory' function. 
+ * @description This function for geting - the select of category from user.
+ *  Then we launching the 'taskGetindexesLiveSubcategory' function.
  * @param param0 ```json
  *  {
         subcategories: number[];
@@ -94,7 +97,7 @@ const taskGetSubategroyLive = async ({...props}: SabcategoryAPIURL): Promise<Sub
             );
         });
         // GET 'subcategory' - responses.
-    
+
         const responses = await  Promise.all(([...setTask] as [ () => any ]).map( async (task ) => task()));
         if (!responses) return [] as Subcategory[];
         return [...responses] as Subcategory[];
@@ -105,7 +108,7 @@ const taskGetSubategroyLive = async ({...props}: SabcategoryAPIURL): Promise<Sub
 };
 
 /**
- * @description This function is task for live costomezation the 'Subcategory' when we chanhging the 'Category'. 
+ * @description This function is task for live costomezation the 'Subcategory' when we chanhging the 'Category'.
  * @param props This param has the proparties ```js
  *  export interface SabcategoryAPIURL {
     subcategories:number[],

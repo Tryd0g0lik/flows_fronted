@@ -1,6 +1,6 @@
 
 /**
- * src\classes\table.ts
+ * src\components\Main\index.tsx
  */
 import React, {useState, useCallback, useEffect, JSX} from "react";
 import { PageMeta, Flow, Type, Status, BASIC_URL_API, Category, Subcategory, PageAssorty, RootState } from "@interfeces";

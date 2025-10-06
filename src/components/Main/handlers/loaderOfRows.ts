@@ -1,5 +1,5 @@
 /**
- * src\app\components\Main\handlers\loaderOfRows.ts
+ * src\components\Main\handlers\loaderOfRows.ts
  */
 import {BASIC_URL_API, Category, Flow, Status, Subcategory, Type, } from 'src/interfaces';
 
