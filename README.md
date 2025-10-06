@@ -144,7 +144,8 @@ Backend: [https://github.com/Tryd0g0lik/flows](https://github.com/Tryd0g0lik/flo
 - "`npm run build`" - сборка в режиме продакшион "`production`". Все файлы найдёте уже на стороне backend части проекта;
 - "`npm run server`" - Старт локальный сервера для разработки;
 - "`npm run cssstyle`" - запускается перед началом работ, но только после "`npm run server`". Формирует файл "`css`" с учетом используемых стилей и компонентов от "`tailwindcss.com`" & "`daisyui.com`";
-- "`F5`" (клавиша) в режииме debug  запускается проект через браузер Chrome. Запускать только после запуска "`npm run server`".
+- "`F5`" (клавиша) в режииме debug  запускается проект через браузер Chrome. Запускать только после запуска "`npm run server`";
+- "`git log --all --oneline --graph --decorate --date=format:'%Y-%m-%d %H:%M:%S' --pretty=format:'%C(yellow)%h%C(auto)%d %C(white)%cd%Creset %s'`"  история развития проекта c datetime.
 
 
 ### Note
